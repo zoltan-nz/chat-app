@@ -2,14 +2,17 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-  model() {
+  user: null,
+
+  model(params) {
+    this.set('user', params.user_name);
     return this.store.findAll('message');
   },
 
   actions: {
-    send(user, message) {
+    createMessage(message) {
       this.store.createRecord('message', {
-        user: user,
+        user: this.get('user'),
         text: message,
         createdAt: new Date()
       }).save();

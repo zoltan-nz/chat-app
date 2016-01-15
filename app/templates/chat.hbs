@@ -1,21 +1,21 @@
-{{user}} is joined to the chat.
-
 {{#each model as |message|}}
   {{message-item
-    item=message
-    action='deleteMessage'
+  item=message
+  action='deleteMessage'
   }}
 {{/each}}
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<div class="navbar navbar-default navbar-fixed-bottom message-bar">
   <div class="container">
-    <div class="navbar-form form-horizontal">
-      <div class="form-group">
-        <div class="col-sm-12">
-          {{input class='form-control input-lg input-block' placeholder='Your message' value=message}}
+      <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-xs-10">
+            {{input class='form-control input-lg input-block' placeholder='Your message' value=message}}
+          </div>
+          <div class="col-xs-2">
+            <button type="submit" class="btn btn-primary btn-lg" {{action 'createMessage' message}}>Send</button>
+          </div>
         </div>
-      </div>
-      <button class="btn btn-primary btn-lg" {{action 'send' user message}}>Send</button>
+      </form>
     </div>
-  </div>
-</nav>
+</div>

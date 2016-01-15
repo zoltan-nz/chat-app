@@ -7,7 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('join');
-  this.route('chat');
+  this.route('chat', { path: '/chat/:user_name' });
 });
 
 export default Router;
