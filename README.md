@@ -35,7 +35,7 @@ Open your terminal and start with
 ```
 $ npm install -g ember-cli
 ```
-This installs ember-cli version 1.13.14
+This installs ember-cli version 1.13.15
 
 You can check it with
 ```
