@@ -255,6 +255,8 @@ We can pass now our user name with `link-to`. Update the `link-to` line in `join
 
 ## Add chat message input
 
+`app/templates/chat.hbs`
+
 ```html
 <nav class="navbar navbar-default navbar-fixed-bottom">
  <div class="container">
@@ -280,11 +282,13 @@ actions: {
      text: message,
      createdAt: new Date()
    }).save();
+   
+   this.controller.set('message', '');
  }
 }
 ```
 
-Empty the input box when message sent.
+The following line clear the `message` property.
 
 ```
 this.controller.set('message', '');
@@ -296,6 +300,8 @@ this.controller.set('message', '');
 $ ember g component message-item
 ```
 
+`app/templates/components/message-item.hbs`
+
 ```html
 <div class="alert alert-info">
  <button class="close" {{action 'remove'}}><span aria-hidden="true">&times;</span></button>
@@ -305,7 +311,7 @@ $ ember g component message-item
 
 ## Download all chat message
 
-When we navigate to `/chat` Ember.js will call our `/app/routes/chat.js` file and it will check, is there something in the `model` hook.
+When we navigate to `/chat` Ember.js will call our `/app/routes/chat.js` file and will check, wheater is there something in the `model` hook.
 
 ```javascript
 import Ember from 'ember';
@@ -344,21 +350,17 @@ Update message-item on chat.hbs
 
 ```
 {{#each model as |message|}}
- {{message-item
-   name=message.user
-   message=message.text
-   date=message.createdAt
-   action='deleteMessage'
-   record=message
- }}
+  {{message-item
+  item=message
+  action='deleteMessage'
+  }}
 {{/each}}
 ```
 
-Add deleteMessage action to route
+Add deleteMessage action to route `app/route/chat.js`
 
 ```
 deleteMessage(record) {
  record.destroyRecord();
 }
 ```
-
