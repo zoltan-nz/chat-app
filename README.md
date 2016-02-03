@@ -1,4 +1,123 @@
-# Chat-app
+# Chat-app (Ember.js 2.3 tutorial - beginner level)
+
+## Contents
+
+* The best way to install Node.js
+* What is node package manager?
+* What is bower.js and package.js?
+* Installation of Ember CLI
+* Our first Ember Application
+* Install Ember Inspector in Chrome/Firefox
+* What is the add-on ecosystem around Ember.js? 
+* The best way to add Bootstrap to an Ember project
+* Adding a navigation bar to our project
+* Routes in Ember.js
+* Creating our first route and page: About
+
+
+## The best way to install Node.js
+
+There are a few ways to install Node.js, but it looks only one way gives you the best experience for long term.
+
+### On Mac
+
+The best way to install Node.js on Mac is `nvm`.
+
+https://github.com/creationix/nvm
+
+You have to have on your Mac the Command Line Tools. Or you install the full XCode from App Store either just use the small Command Line Tools installer: 
+ 
+ ```
+ xcode-select --install
+ ```
+
+(If you've just installed XCode, don't forget to launch it first and accepting the Terms and Conditions.)
+
+You can use the install script for `nvm` installation.
+
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
+```
+
+However, I would encourage you to use the manual installation process. Nothing special there. Firstly, you just clone the whole repo in a subfolder in your home directory. (`~/.nvm`) Secondly, you add two extra lines to your console script.
+
+Please follow these steps on NVM Readme: https://github.com/creationix/nvm#manual-install
+
+You have to relaunch your Terminals. Maybe you have to log out and log back to activate the new settings.
+
+List your installed node versions:
+
+```
+$ nvm list
+```
+
+Install the available node versions on the cloud:
+
+```
+$ nvm ls-remote
+```
+
+Choose the most recent version. (At the moment it is v5.5.0)
+Install the selected version with the following command:
+
+```
+$ nvm install 5.5.0
+```
+
+Setup this version as the default.
+
+```
+$ nvm use 5.5.0
+$ nvm alias default 5.5.0
+```
+Check your node version with
+
+```
+$ node -v
+```
+You should see `v5.5.0` if you installed the above version.
+
+You can update your `npm` to the latest.
+
+```
+$ npm install -g npm
+```
+
+After the update, the npm version, `npm -v`, should be at least `3.6.0` or above.
+
+Alternatives, but not suggested:
+* Official Installer: https://nodejs.org/en/download/
+* Using brew: https://nodejs.org/en/download/package-manager/#osx
+
+### On Linux
+
+Please avoid to install Node.js with `apt-get` on Ubuntu.
+If you already installed Node.js with the built in package manager, please remove that. (`sudo apt-get purge nodejs && sudo apt-get autoremove && sudo apt-get autoclean`)
+
+The installation process on Linux is the same as on OSX.
+
+With the provided script:
+
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
+```
+
+(Please read the instructions under OSX section.)
+
+```
+$ nvm list
+$ nvm ls-remote
+$ nvm install 5.5.0
+$ nvm use 5.5.0
+$ nvm alias default 5.5.0
+$ node -v
+$ npm install -g npm
+$ npm -v
+```
+
+### On Windows
+
+TODO
 
 ## Prerequisites
 
