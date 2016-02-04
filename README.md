@@ -3,8 +3,8 @@
 ## Contents
 
 * The best way to install Node.js
-* What is node package manager?
-* What is bower.js and package.js?
+* About package managers (npm, bower)
+* Prerequisites for developing and running an Ember.js app
 * Installation of Ember CLI
 * Our first Ember Application
 * Install Ember Inspector in Chrome/Firefox
@@ -17,7 +17,7 @@
 
 ## The best way to install Node.js
 
-There are a few ways to install Node.js, but it looks only one way gives you the best experience for long term.
+There are a few ways to install Node.js, but it looks only one way gives you the best experience for long term on Mac.
 
 ### On Mac
 
@@ -31,7 +31,7 @@ You have to have on your Mac the Command Line Tools. Or you install the full XCo
  xcode-select --install
  ```
 
-(If you've just installed XCode, don't forget to launch it first and accepting the Terms and Conditions.)
+(If you've just installed XCode, don't forget to launch it and accept the Terms and Conditions.)
 
 You can use the install script for `nvm` installation.
 
@@ -41,7 +41,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | b
 
 However, I would encourage you to use the manual installation process. Nothing special there. Firstly, you just clone the whole repo in a subfolder in your home directory. (`~/.nvm`) Secondly, you add two extra lines to your console script.
 
-Please follow these steps on NVM Readme: https://github.com/creationix/nvm#manual-install
+Please follow these steps on `nvm` Readme: https://github.com/creationix/nvm#manual-install
 
 You have to relaunch your Terminals. Maybe you have to log out and log back to activate the new settings.
 
@@ -117,44 +117,96 @@ $ npm -v
 
 ### On Windows
 
-TODO
+On Windows, if you don't need more version from Node.js, you can use the [official installer](https://nodejs.org/en/download/stable/).
 
-## Prerequisites
+Install also [Git for Windows](https://git-for-windows.github.io/).
+ 
+Don't forget to read [this instruction](http://ember-cli.com/user-guide/#windows). 
 
-You will need the following things properly installed on your computer.
+Install and run `ember-cli-windows`
+
+```
+$ npm install ember-cli-windows -g
+$ ember-cli-windows
+```
+
+## Package managers (node, bower)
+
+`npm` is Node.js' package manager. It organises all dependencies in `package.json` file. In Ember.js project we use Node.js and `npm` for keeping our development process smooth and automatic, however, when you deploy your project, it will be only html, javascript, stylesheets and assets, like images and fonts. For example node packages help to combine your final project, but they won't be fully part of your concatenated application.
+
+`npm` command line tool comes with Node.js. You can check out your version with `npm -v` and you can update with `npm install -g npm`. The `-g` means, this package will be global, so you can run it from every directory on your computer.
+
+Important commands:
+
+```
+$ npm install
+$ npm update
+```
+Learn more about `npm` here:
+
+* [Getting started guide](https://docs.npmjs.com/getting-started/what-is-npm)
+* [Package directory](www.npmjs.com)
+
+`bower` is a package manager for assets. We use `bower.json` for listing javascript libraries and css frameworks, which need to run our frontend app when we publish. So these packages will be combined inside our final codebase. For example Bootstrap, jQuery, D3.js libraries will appear in this list if we need them.
+
+Install bower:
+
+```
+npm install -g bower
+```
+
+* [More about Bower](http://bower.io/)
+
+Luckily in Ember.js development, we don't really have to directly manage these packages, because Ember CLI addons deal with all requirements.
+
+## Prerequisites for running an Ember.js app
+
+You will need the followings properly installed on your computer. These help in development process.
 
 * [Git](http://git-scm.com/)
+
+Probably you already have `git` on your computer. (It comes with XCode on Mac, on Windows you can install it with [Git for Windows](https://git-for-windows.github.io/)) 
+
 * [Node.js](http://nodejs.org/) (with NPM)
+
+See above.
+
 * [Bower](http://bower.io/)
-* [Ember CLI](http://www.ember-cli.com/)
+
+See above.
+
+```
+npm install -g bower
+```
+
 * [PhantomJS](http://phantomjs.org/)
 
-## Installation
+PhantomJS is a headless browser. Ember.js uses it for running tests.
 
-* `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install`
-* `bower install`
+```
+npm install -g phantomjs
+```
 
-## Running / Development
+* (Optional) [Watchman](https://facebook.github.io/watchman/)
 
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+Watchman is a tool for watching changes in your project folder, it triggers a rebuild action when you modify something in your code. It helps in live-reloading during the development process. (Only on Mac and on Linux at the moment. Facebook promised a Windows version soon.)
 
-# Implementation Log
+More details about [Watchman Installation](https://facebook.github.io/watchman/docs/install.html#build-install)
 
-## Getting started
-
-We assume that you have the latest node.js installed.
+```
+$ brew update
+$ brew install watchman
+```
 
 ## Install ember-cli
 
-Open your terminal and start with
+Open your terminal and install the latest [Ember CLI](http://www.ember-cli.com/)
 
 ```
-$ npm install -g ember-cli
+$ npm install -g ember-cli@2.3.0-beta.1
 ```
-This installs ember-cli version 1.13.15
+
+This will install or if you already had will update to the latest version
 
 You can check it with
 ```
@@ -173,54 +225,17 @@ Navigate in your new app folder:
 $ cd chat-app
 ```
 
-## Update Ember to v2.3.0 and Ember Data to v2.3.0
-
-Open the project in your favourite editor.
-Update package versions in `bower.json`.
-
-* Change `ember` version to `2.3.0`
-* Update `ember-cli-shims` to `0.1.0`
-* Remove `ember-data`, because from version `2.3`, we need `ember-data` only in `package.json`.
-
-
-```
-// bower.json
-{
-  "name": "chat-app",
-  "dependencies": {
-    "ember": "2.3.0",
-    "ember-cli-shims": "0.1.0",
-    "ember-cli-test-loader": "0.2.1",
-    "ember-data": "2.3.0",
-    ...
-```
-
-Find `ember-data` in `package.json` and update the version to `2.3.0`
-
-```
-// package.json
-{
-    ...
-    "ember-cli-uglify": "^1.2.0",
-    "ember-data": "2.3.0",
-    "ember-disable-proxy-controllers": "^1.0.1",
-    ...
-}
-```
-
-Because we modified `package.json` and `bower.json`, we have to run the following commands in our terminal. 
-
-```
-$ npm install && bower install
-```
-
 Launch your app with `ember server` and open in your browser.
 
 ```
 $ ember server
 ```
 
-Open the following link in your browser: [http://localhost:4200](http://localhost:4200)
+Open the following link: [http://localhost:4200](http://localhost:4200)
+
+## Install Ember Inspector Chrome Extension
+
+Follow instructions on the [official guide](https://guides.emberjs.com/v2.3.0/ember-inspector/installation/).
 
 ## Install bootstrap
 
