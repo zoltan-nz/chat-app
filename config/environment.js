@@ -4,8 +4,6 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'chat-app',
     environment: environment,
-    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
-    firebase: 'https://meetup-chat-app.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
