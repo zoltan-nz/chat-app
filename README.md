@@ -30,9 +30,9 @@ Basics of Node.js and Ember.js
 
 
 
-### Session 1
+## Session 1
 
-#### <a name='package-managers'></a>Package managers (node, bower)
+### <a name='package-managers'></a>Package managers (node, bower)
 
 `npm` is Node.js' package manager. It organises all dependencies in `package.json` file. In Ember.js project we use Node.js and `npm` for keeping our development process smooth and automatic, however, when you deploy your project, it will be only html, javascript, stylesheets and assets, like images and fonts. For example node packages help to combine your final project, but they won't be fully part of your concatenated application.
 
@@ -61,7 +61,7 @@ npm install -g bower
 
 Luckily in Ember.js development, we don't really have to directly manage these packages, because Ember CLI addons deal with all requirements.
 
-## <a name='prerequisites'></a>Prerequisites for running an Ember.js app
+### <a name='prerequisites'></a>Prerequisites for running an Ember.js app
 
 You will need the followings properly installed on your computer. These help in development process.
 
@@ -101,7 +101,7 @@ $ brew update
 $ brew install watchman
 ```
 
-## <a name="install-ember-cli"></a>Install Ember CLI
+### <a name="install-ember-cli"></a>Install Ember CLI
 
 Open your terminal and install the latest [Ember CLI](http://www.ember-cli.com/)
 
@@ -116,9 +116,7 @@ You can check it with
 $ ember -v
 ```
 
-
-
-## <a name="new-app"></a>Creating our first Ember application
+### <a name="new-app"></a>Creating our first Ember application
 
 ```
 $ ember new chat-app
@@ -139,11 +137,11 @@ $ ember server
 
 Open the following link: [http://localhost:4200](http://localhost:4200)
 
-## <a name="inspector"></a>Install Ember Inspector Chrome Extension
+### <a name="inspector"></a>Install Ember Inspector Chrome Extension
 
 Follow instructions on the [official guide](https://guides.emberjs.com/v2.3.0/ember-inspector/installation/).
 
-## <a name="navigation-bar"></a>Create navigation bar and an About page
+### <a name="navigation-bar"></a>Create navigation bar and an About page
 
 Firstly, read the instructions on our [Ember.js tutorial](http://yoember.com/#navigation-bar) page, about how can you create a navigation partial. Secondly, you can create also a new About page. (Follow steps in the [Ember.js tutorial](http://yoember.com/#about-page))
  
@@ -154,6 +152,78 @@ ember install ember-bootstrap-nav-link
 ```
 Don't forget to update `link-to` to `nav-link-to` in navigation bar. 
 
-## <a name="computed-property"></a>Learn more about computed property and observers
+### <a name="computed-property"></a>Learn more about computed property and observers
 
-You can practice if you follow our connected tutorial section. [Computed property and observers in Ember.js](http://yoember.com/#lesson-2)
+You can practice if you follow our related tutorial section. [Computed property and observers in Ember.js](http://yoember.com/#lesson-2)
+
+## Session 2
+
+### Model structure of Chat App
+
+User
+- email
+- nick name
+hasMany Messages
+
+Channel
+- name
+hasMany Messages
+
+Message
+- text
+- createdAt
+belongsTo User
+belongsTo Channel
+
+```
+$ ember g model user email:string name:string messages:hasMany
+$ ember g model channel name:string messages:hasMany
+$ ember g model message text:string createdAt:date belongsTo:user belongsTo:channel
+```
+
+### Setup Firebase API
+
+```
+$ ember install emberfire
+```
+
+* Configuration.
+
+### User management
+
+Simple.
+
+```
+$ ember g route users
+```
+
+* Add to menu.
+
+* Add form to create user.
+
+* Setup `newUser` in `setupController()`.
+
+* Add action to route handler.
+
+* Add model function to download all users.
+
+* Update template to list users and add outlet for details
+
+* Create users/user subroute, update route, pass param
+
+* Subroute route model download
+
+* md5 for gravatar
+
+We need md5.
+
+CryptoJS is the answer.
+There isn't ember-cli implementation for CryptoJS yet.
+
+1.
+ember install ember-browserify 
+2.
+npm install crypto-js --save-dev
+
+
+## Session 3

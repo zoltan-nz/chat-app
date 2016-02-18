@@ -1,0 +1,23 @@
+<h1>User management</h1>
+
+<div class="row">
+  <div class="col-md-5">
+
+    <form class="form-inline">
+        {{input class="form-control" value=newUser.name placeholder="New nickname"}}
+        {{input class="form-control" value=newUser.email placeholder="User email"}}
+      <button type="submit" {{action 'addUser' newUser}} class="btn btn-default">Add</button>
+    </form>
+
+    <div class="list-group">
+      {{#each model as |user|}}
+        {{#link-to "users.user" user class="list-group-item"}}{{user.name}}{{/link-to}}
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="col-md-7">
+    {{outlet}}
+  </div>
+</div>
+
