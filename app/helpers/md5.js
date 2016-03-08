@@ -1,10 +1,8 @@
 import Ember from 'ember';
-import CryptoJS from "npm:crypto-js";
-
-const { MD5 } = CryptoJS;
+import _md5 from "npm:blueimp-md5";
 
 export function md5(params/*, hash*/) {
-  return MD5(params[0]);
+  return _md5(params[0]);
 }
 
 export default Ember.Helper.helper(md5);

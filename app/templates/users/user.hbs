@@ -1,5 +1,19 @@
-<h1>{{model.name}}</h1>
 
-E-mail: {{model.email}}
+  <div class="well well-lg">
 
-<img src="http://www.gravatar.com/avatar/{{md5 model.email}}?s=100">
+    <div class="row">
+
+      <div class="col-sm-5">
+        <img src="http://www.gravatar.com/avatar/{{md5 model.email}}?s=200">`
+      </div>
+
+      <div class="col-sm-7">
+        <h2>{{model.name}}</h2>
+
+        <h4>E-mail: {{model.email}}</h4>
+      </div>
+
+    </div>
+  </div>
+
+

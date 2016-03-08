@@ -3,12 +3,12 @@
 <div class="row">
   <div class="col-md-5">
 
-    <form class="form-inline">
+    <form class="form-inline" {{action 'addUser' newUser on="submit"}}>
         {{input class="form-control" value=newUser.name placeholder="New nickname"}}
         {{input class="form-control" value=newUser.email placeholder="User email"}}
-      <button type="submit" {{action 'addUser' newUser}} class="btn btn-default">Add</button>
+      <button type="submit" class="btn btn-default">Add</button>
     </form>
-
+    <br><br>
     <div class="list-group">
       {{#each model as |user|}}
         {{#link-to "users.user" user class="list-group-item"}}{{user.name}}{{/link-to}}

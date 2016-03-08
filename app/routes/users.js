@@ -14,7 +14,9 @@ export default Ember.Route.extend({
 
   actions: {
     addUser(newUser) {
-      this.store.createRecord('user', { name: newUser.name, email: newUser.email }).save();
+      this.store.createRecord('user', { name: newUser.name, email: newUser.email })
+        .save()
+        .then((response) => this.transitionTo('users.user', response));
 
       this.controller.set('newUser', {});
     }

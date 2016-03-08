@@ -1,6 +1,6 @@
-Chat App 
+Chat App
 ===
-Ember.js 2.3 tutorial
+Ember.js 2.4 tutorial
 --
 
 ## Contents
@@ -14,7 +14,7 @@ Basics of Node.js and Ember.js
 * [Installation of Ember CLI](#user-content-install-ember-cli)
 * [Creating our first Ember application](#user-content-new-app)
 * [Install Ember Inspector in Chrome/Firefox](#user-content-inspector)
-* What is the add-on ecosystem around Ember.js? 
+* What is the add-on ecosystem around Ember.js?
 * [The best way to add Bootstrap to an Ember project](http://yoember.com/#ember-bootstrap-sass) (link to yoember.com)
 * Ember.js router
 * [Adding a navigation bar and About page to our project](#user-content-navigation-bar)
@@ -67,7 +67,7 @@ You will need the followings properly installed on your computer. These help in 
 
 * [Git](http://git-scm.com/)
 
-Probably you already have `git` on your computer. (It comes with XCode on Mac, on Windows you can install it with [Git for Windows](https://git-for-windows.github.io/)) 
+Probably you already have `git` on your computer. (It comes with XCode on Mac, on Windows you can install it with [Git for Windows](https://git-for-windows.github.io/))
 
 * [Node.js](http://nodejs.org/) (with NPM)
 
@@ -144,13 +144,13 @@ Follow instructions on the [official guide](https://guides.emberjs.com/v2.3.0/em
 ### <a name="navigation-bar"></a>Create navigation bar and an About page
 
 Firstly, read the instructions on our [Ember.js tutorial](http://yoember.com/#navigation-bar) page, about how can you create a navigation partial. Secondly, you can create also a new About page. (Follow steps in the [Ember.js tutorial](http://yoember.com/#about-page))
- 
-You can use this add-on to make Ember.js `link-to` compatible with Bootstrap: https://github.com/zoltan-nz/ember-bootstrap-nav-link 
+
+You can use this add-on to make Ember.js `link-to` compatible with Bootstrap: https://github.com/zoltan-nz/ember-bootstrap-nav-link
 
 ```
 ember install ember-bootstrap-nav-link
 ```
-Don't forget to update `link-to` to `nav-link-to` in navigation bar. 
+Don't forget to update `link-to` to `nav-link-to` in navigation bar.
 
 ### <a name="computed-property"></a>Learn more about computed property and observers
 
@@ -217,13 +217,32 @@ $ ember g route users
 
 We need md5.
 
-CryptoJS is the answer.
-There isn't ember-cli implementation for CryptoJS yet.
+https://github.com/blueimp/JavaScript-MD5
+There isn't ember-cli implementation.
 
 1.
-ember install ember-browserify 
+ember install ember-browserify
 2.
-npm install crypto-js --save-dev
+npm install  --save-dev
 
+After creating a new user, redirect to the subroute, so the new user details will be active. 
 
 ## Session 3
+
+* Setup md5 and gravatar
+
+* Validation for email address on user page
+- playing with observer and computed property
+- disable the button if it is not valid
+- check validation for email address format
+
+* Create a new Chat page
+- creating message model
+- input box and button for a message
+- save the message to the server
+
+## Session 4
+
+User ---- Messages ---- Channels
+
+- Search in messages
