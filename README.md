@@ -236,13 +236,17 @@ After creating a new user, redirect to the subroute, so the new user details wil
 - disable the button if it is not valid
 - check validation for email address format
 
+
+## Session 4
+
+User ---- Messages ---- Channels
+
+
 * Create a new Chat page
 - creating message model
 - input box and button for a message
 - save the message to the server
 
-## Session 4
-
-User ---- Messages ---- Channels
+## Session 5
 
 - Search in messages
